@@ -1,0 +1,65 @@
+$main-background-color: $dark-green;
+$secondary-background: $light-green;
+$font-color: $purpleish;
+
+body {
+  background-color: $main-background-color;
+  color: $font-color;
+}
+
+.logo {
+  margin: 40px auto;
+  text-align: center;
+}
+
+.options {
+  max-width: 80%;
+  text-align: center;
+  margin: 50px;
+}
+
+#account {
+  left: 10px;
+  position: absolute;
+  top: 30px;
+}
+
+#rules {
+  position: absolute;
+  right: 10px;
+  top: 30px;
+}
+
+h2 {
+  color: $secondary-background;
+}
+
+.clicked {
+  color: $dark-green;
+  font-weight: 900;
+}
+
+.btn-default:hover {
+  color: $dark-green;
+  font-weight: 700;
+}
+
+.nav {
+  @include make-row();
+  margin-left: 75%;
+
+  .nav-button {
+    @include make-lg-column(3);
+    @include make-md-column(3);
+    @include make-sm-column(3);
+    @include make-xs-column(3);
+  }
+}
+
+@media (max-width: 800px) {
+  .logo img {
+    margin: 135px auto 0;
+    max-width: 200px;
+    text-align: center;
+  }
+}
