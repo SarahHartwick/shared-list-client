@@ -1,6 +1,7 @@
 'use strict';
 
 const app = require('../app.js');
+const ui = require('./list-ui.js');
 
 const showEvents = () => {
   return $.ajax({
@@ -40,8 +41,78 @@ const showItems = () => {
   });
 };
 
+const deleteEvent = function(data){
+  return $.ajax({
+    url: app.host + "/events/" + data,
+    method: 'DELETE',
+    dataType: 'json',
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+  });
+};
+
+const addItem = (data) => {
+  return $.ajax({
+    url: app.host + '/items/',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+    data: {
+      "item": {
+        "event_id": data.eventId,
+        "name": data.name,
+        "unit": data.unit
+      }
+    }
+  });
+};
+
+const showEvent = function(data){
+  return $.ajax({
+    url: app.host + "/events/" + data,
+    method: 'GET',
+    dataType: 'json',
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+  });
+};
+
+const deleteItem = function(data){
+  return $.ajax({
+    url: app.host + "/items/" + data,
+    method: 'DELETE',
+    dataType: 'json',
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+  });
+};
+
+const claimItem = (data) => {
+  return $.ajax({
+    url: app.host + '/items/' + data,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+    data: {
+      "item": {
+        "user_id": app.user.id,
+      }
+    }
+  });
+};
+
 module.exports = {
   showEvents,
   createEvent,
   showItems,
+  deleteEvent,
+  addItem,
+  showEvent,
+  deleteItem,
+  claimItem,
 };

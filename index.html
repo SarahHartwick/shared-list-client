@@ -33,21 +33,18 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel">Sign In</h4>
+              <h3 style="text-align: center">Sign In to Your Account</h3>
             </div>
             <div class="modal-body">
-              <form id="sign-in">
+              <form id="sign-in" style="text-align:center;">
                 <fieldset>
-                  <input type="email" name="credentials[email]" id="signin-email" placeholder="Your Email">
-                  <input type="password" name="credentials[password]" id="signin-password" placeholder="Your Password">
-                  <input type="submit" name="submit" value="Sign In">
+                  <input type="email" name="credentials[email]" id="signin-email" placeholder="Your Email"><br /><br />
+                  <input type="password" name="credentials[password]" id="signin-password" placeholder="Your Password"><br /><br />
+                  <input type="submit" name="submit" class="btn btn-lg btn-default" value="Sign In">
                 </fieldset>
                 <div id= "sign-in-notes">
                 </div>
               </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
           </div>
         </div>
@@ -59,12 +56,11 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel">Sign Up</h4>
+              <h3 style="text-align: center">Create an Account</h3>
             </div>
             <div class="modal-body">
               <form id="sign-up" style="text-align:center;">
                 <fieldset>
-                  <legend>Create Account</legend>
 
                   <input type="email" name="credentials[email]"
                   id="signup-email" placeholder="Your Email"><br /><br />
@@ -75,15 +71,12 @@
                   <input type="password" name="credentials[password_confirmation]"
                   id="signup-password-confirmation" placeholder="Confirm Password"><br /><br />
 
-                  <input type="submit" name="submit" value="Create Account">
+                  <input type="submit" name="submit" class="btn btn-lg btn-default" value="Create Account">
 
                 </fieldset>
                 <div id= "sign-up-notes">
                 </div>
               </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
           </div>
         </div>
@@ -154,16 +147,16 @@
               <div class="modal-body">
                 <form id="create-event-form" style="text-align:center;">
                   <fieldset class="form-group">
-                  <label for="event-name">What is your Event?</label>
+                  <label for="event-name"><span style="color:#236167" class="glyphicon glyphicon-sunglasses"></span> What is your Event?</label>
                   <input type="text" class="form-control" name="name" id="event-name" placeholder="Name Your Event">
                 </fieldset>
                 <fieldset class="form-group">
-                  <label for="event-location">Where is your Event?</label>
+                  <label for="event-location"><span style="color:#236167" class="glyphicon glyphicon-globe"></span> Where is your Event?</label>
                   <input type="text" class="form-control" name="location" id="event-location" placeholder="Event Location">
                 </fieldset>
                 <fieldset class="form-group">
-                    <span class="glyphicon glyphicon-calendar"></span>
-                    <input type='text' name="date" class="form-control" id="event-day" placeholder="YYYY-MM-DD" />
+                    <label for="event-date"><span style="color:#236167" class="glyphicon glyphicon-calendar"></span> What Day is your Event?</label>
+                    <input type='text' name="date" class="form-control" id="event-date" placeholder="YYYY-MM-DD" />
                 </fieldset>
                 <fieldset class="form-group">
                     <input type="submit" name="submit" class="btn btn-lg btn-default" value="Create Event">
@@ -188,7 +181,44 @@
           </fieldset>
         </form>
       </div>
-
+<!-- Add Item -->
+    <div class="modal fade" id="add-item-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Add Item to Event List</h4>
+          </div>
+          <div class="modal-body">
+            <form id="add-item-form" style="text-align:center;">
+              <fieldset class="form-group">
+              <label for="event-name"><span style="color:#236167" class="glyphicon glyphicon-sunglasses"></span> What is the Item?</label>
+              <input type="text" class="form-control" name="name" id="item-name" placeholder="Item Name">
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="event-location"><span style="color:#236167" class="glyphicon glyphicon-globe"></span> How Many/Much Do You Need?</label>
+              <input type="text" class="form-control" name="unit" id="item-unit" placeholder="Item Quantity">
+            </fieldset>
+            <fieldset class="form-group">
+              <input type="hidden" name="eventId" id="item-event-id" value="34">
+            </fieldset>
+            <fieldset class="form-group">
+                <input type="submit" name="submit" class="btn btn-lg btn-default" value="Add Item">
+            </fieldset>
+              <div id= "item-notes">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- Main Content-->
+<div style="clear: both;"></div>
+<div class="content">
+</div>
 <!-- ScoreBoard-->
 <!-- <div class = "scoreboard">
   <div class="panel panel-default">
@@ -251,17 +281,14 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel">Sign Out</h4>
+              <h3 class="modal-title" style="text-align: center">Are You Sure You Want to Sign Out?</h3>
             </div>
             <div class="modal-body">
                 <form id="sign-out">
-                  <fieldset>
-                    <input type="submit" name="submit" value="Sign Out">
+                  <fieldset style="text-align: center">
+                    <input type="submit" class="btn btn-lg btn-default" name="submit" value="Sign Out">
                   </fieldset>
                 </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
           </div>
         </div>
@@ -274,7 +301,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel">Change Password</h4>
+              <h3 class="modal-title" style="text-align: center">Change Your Password</h3>
             </div>
             <div class="modal-body">
               <form id="change-password" style="text-align:center;">
@@ -286,13 +313,10 @@
                   <input type="password" name="passwords[new]"
                   placeholder="New Password"><br /><br />
 
-                  <input type="submit" name="submit" value="Change Password">
+                  <input type="submit" name="submit" class="btn btn-md btn-default" value="Change Password">
 
                 </fieldset>
               </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
           </div>
         </div>

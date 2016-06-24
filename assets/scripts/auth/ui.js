@@ -46,7 +46,8 @@ const signOutSuccess = (data) => {
 };
 
 const changePasswordSuccess = (data) => {
-  console.log('User #' + app.user.id + ' has successfully changed password.');
+  console.log('User #' + app.user.id + ' has successfully changed password.');  
+  $('#password-modal').modal('hide');
 };
 
 const changePasswordFailure = () => {
