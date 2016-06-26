@@ -20,12 +20,11 @@
   <tr>
     <div class="checkbox" style="text-align:left">
   <td id="claimed">
-    {{#if user_id}}
-    <label>{{user_id}}</label>
-    {{/if}}
-    {{#else}}<label>
+    {{#if claimed}}
+    <h5 style="color:#000">{{user_id}} Claimed!</h5>
+    {{else}}<label>
     <input type="checkbox" id="claim" data-id={{id}}></label>
-    {{/else}}
+    {{/if}}
   </td>
     </div>
     <td><h4>{{name}}</h4></td>

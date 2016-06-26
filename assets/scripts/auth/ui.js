@@ -41,12 +41,16 @@ const signOutSuccess = (data) => {
   $('#password-modal').modal('hide');
   $('#signed-in').hide();
   $('#signed-out').show();
-
-
+  $('.content').html('');
+  $('#signup-email').val('');
+  $('#signup-password').val('');
+  $('#signup-password-confirmation').val('');
+  $('#signin-email').val('');
+  $('#signin-password').val('');
 };
 
 const changePasswordSuccess = (data) => {
-  console.log('User #' + app.user.id + ' has successfully changed password.');  
+  console.log('User #' + app.user.id + ' has successfully changed password.');
   $('#password-modal').modal('hide');
 };
 

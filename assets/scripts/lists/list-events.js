@@ -28,7 +28,7 @@ const viewItems = (event) => {
   event.preventDefault();
   $('.content').empty();
   api.showItems()
-  .done(ui.showEvents)
+  .done(ui.showItems)
   .fail(ui.failure);
 };
 
@@ -50,15 +50,16 @@ const setEventId = (event) => {
   $('#item-name').val('');
   $('#item-unit').val('');
   $('#item-event-id').val(id);
-
+  $('#item-notes').empty();
 };
 
 const addItem = (event) => {
   event.preventDefault();
+  $('#item-notes').empty();
   let data = getFormFields(event.target);
   api.addItem(data)
   .done(ui.itemAdded)
-  .fail(ui.failure);
+  .fail(ui.itemFailure);
 };
 
 const viewEvent = (event) => {
@@ -83,8 +84,24 @@ const claimItem = (event) => {
   api.claimItem(data)
   .done(ui.claimItemSuccess)
   .fail(ui.failure);
-  $(event.target).parent().empty();
-}
+  $(event.target).parent().html('<h5>You Claimed!</h5>');
+};
+
+const purchaseItem = (event) => {
+  let data = $(event.target).data("id");
+  api.purchaseItem(data)
+  .done(ui.purchaseItemSuccess)
+  .fail(ui.failure);
+  $(event.target).parent().html('<h5>Purchased!</h5>');
+};
+
+const unclaimItem = (event) => {
+  let data = $(event.target).parent().data("id");
+  api.unclaimItem(data)
+  .done(ui.unclaimItemSuccess)
+  .fail(ui.failure);
+  $(event.target).parent().parent().parent().hide();
+};
 
 const addHandlers = () => {
   $('#view-my-events').on('click', viewEvents);
@@ -97,6 +114,8 @@ const addHandlers = () => {
   $(document).on('click','#addItem', setEventId);
   $(document).on('click','#deleteItem', deleteItem);
   $(document).on('click','#claim', claimItem);
+  $(document).on('click','#purchase', purchaseItem);
+  $(document).on('click','#unclaimItem', unclaimItem);
 };
 
 module.exports = {

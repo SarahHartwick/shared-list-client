@@ -63,7 +63,9 @@ const addItem = (data) => {
       "item": {
         "event_id": data.eventId,
         "name": data.name,
-        "unit": data.unit
+        "unit": data.unit,
+        "purchased": false,
+        "claimed": false,
       }
     }
   });
@@ -101,6 +103,38 @@ const claimItem = (data) => {
     data: {
       "item": {
         "user_id": app.user.id,
+        "claimed": "true"
+      }
+    }
+  });
+};
+
+const purchaseItem = (data) => {
+  return $.ajax({
+    url: app.host + '/items/' + data,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+    data: {
+      "item": {
+        "purchased": "true"
+      }
+    }
+  });
+};
+
+const unclaimItem = (data) => {
+  return $.ajax({
+    url: app.host + '/items/' + data,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+    data: {
+      "item": {
+        "user_id": null,
+        "claimed": "false"
       }
     }
   });
@@ -115,4 +149,6 @@ module.exports = {
   showEvent,
   deleteItem,
   claimItem,
+  purchaseItem,
+  unclaimItem,
 };

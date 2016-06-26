@@ -1,0 +1,35 @@
+<div id="item-listing">
+  <h1>Item List:</h1>
+  <!-- <a href="#" id="addItem" class="btn btn-default btn-md" role="button" data-toggle="modal"
+  data-target="#add-item-modal" data-id={{event.id}}><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span> Add Items</span></a>
+
+  <button class='btn btn-md btn-default' id="deleteThis" data-id={{event.id}}><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete Event</button> -->
+
+  <table class="table table-hover" id="item-table">
+    <tr>
+      <td><h4 style="color:#000; text-decoration: underline">Purchased?</h4></td>
+      <td><h4 style="color:#000; text-decoration: underline">Item Name</h4></td>
+      <td><h4 style="color:#000; text-decoration: underline">Quantity</h4></td>
+      <td><h4 style="color:#000; text-decoration: underline">Unclaim</h4></td>
+    </tr>
+  {{#items}}
+  <tr>
+    <div class="checkbox" style="text-align:left">
+  <td id="purchased">
+    {{#if purchased}}
+    <h5 style="color:#000">Purchased!</h5>
+    {{else}}<label>
+    <input type="checkbox" id="purchase" data-id={{id}}></label>
+    {{/if}}
+  </td>
+    </div>
+    <td><h4>{{name}}</h4></td>
+    <td><h4>{{unit}}</h4></td>
+</td>
+<td><button type="button" class="close" style="text-align:center" id="unclaimItem" data-id={{id}}><span aria-hidden="true">&times;</span></button>
+</td>
+
+    {{/items}}
+  </tr>
+  </table>
+</div>

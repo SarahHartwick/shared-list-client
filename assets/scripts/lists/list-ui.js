@@ -4,10 +4,16 @@ const app = require('../app.js');
 const singleEventListing = require('../templates/singleEvent.handlebars');
 const myEventsListing = require('../templates/myEvents.handlebars');
 const itemListing = require('../templates/newItem.handlebars');
+const myItemsListing = require('../templates/myItems.handlebars');
 
 const showEvents = (data) => {
   console.log(data);
   $('.content').append(myEventsListing(data));
+};
+
+const showItems = (data) => {
+  console.log(data);
+  $('.content').append(myItemsListing(data));
 };
 
 const eventCreated = (event) => {
@@ -39,6 +45,15 @@ const itemAdded = (item) => {
 };
 
 const claimItemSuccess = (data) => {
+
+};
+
+const purchaseItemSuccess = (data) => {
+
+};
+
+const itemFailure = (data) => {
+  $('#item-notes').append('<span style="color:red">Do not leave any fields blank.</span>');
 };
 
 
@@ -50,4 +65,6 @@ module.exports = {
   deleteEventSuccess,
   eventSelected,
   itemAdded,
+  itemFailure,
+  showItems,
 };
