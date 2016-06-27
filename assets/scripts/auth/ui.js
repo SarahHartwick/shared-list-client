@@ -33,6 +33,8 @@ const signInSuccess = (data) => {
   $('#signup-modal').modal('hide');
   $('#signed-out').hide();
   $('#signed-in').show();
+  $('.jumbotron').show();
+  $('#welcome').html('<h1>Hello, ' + app.user.name +'</h1>');
 };
 
 const signOutSuccess = (data) => {
@@ -41,7 +43,7 @@ const signOutSuccess = (data) => {
   $('#password-modal').modal('hide');
   $('#signed-in').hide();
   $('#signed-out').show();
-  $('.content').html('');
+  $('.content').empty();
   $('#signup-email').val('');
   $('#signup-password').val('');
   $('#signup-password-confirmation').val('');

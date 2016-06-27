@@ -9,6 +9,7 @@ const singleEventListing = require('../templates/singleEvent.handlebars');
 const viewEvents = (event) => {
   event.preventDefault();
   $('.content').empty();
+  $('.jumbotron').hide();
   api.showEvents()
   .done(ui.showEvents)
   .fail(ui.failure);
@@ -17,6 +18,7 @@ const viewEvents = (event) => {
 const createEvent = (event) => {
   event.preventDefault();
   $('.content').empty();
+  $('.jumbotron').hide();
   let data = getFormFields(event.target);
   api.createEvent(data)
   .done(ui.eventCreated)
@@ -27,9 +29,17 @@ const createEvent = (event) => {
 const viewItems = (event) => {
   event.preventDefault();
   $('.content').empty();
+  $('.jumbotron').hide();
   api.showItems()
   .done(ui.showItems)
   .fail(ui.failure);
+};
+
+const searchEvents = (event) => {
+  event.preventDefault();
+  $('.content').empty();
+  $('#welcome').empty();
+  $('.jumbotron').show();
 };
 
 const clearForms = () => {
@@ -84,7 +94,7 @@ const claimItem = (event) => {
   api.claimItem(data)
   .done(ui.claimItemSuccess)
   .fail(ui.failure);
-  $(event.target).parent().html('<h5>You Claimed!</h5>');
+  $(event.target).parent().html('<h5><span style="color:#236167" class="glyphicon glyphicon-user"></span> You Claimed!</div></h5>');
 };
 
 const purchaseItem = (event) => {
@@ -92,7 +102,7 @@ const purchaseItem = (event) => {
   api.purchaseItem(data)
   .done(ui.purchaseItemSuccess)
   .fail(ui.failure);
-  $(event.target).parent().html('<h5>Purchased!</h5>');
+  $(event.target).closest('#purchased').html('<h5><span style="color:#236167" id="unpurchase" data-id=' + data + ' class="glyphicon glyphicon-ok"></span></h5>');
 };
 
 const unclaimItem = (event) => {
@@ -103,12 +113,29 @@ const unclaimItem = (event) => {
   $(event.target).parent().parent().parent().hide();
 };
 
+const unpurchaseItem = (event) => {
+  let data = $(event.target).data("id");
+  api.unpurchaseItem(data)
+  .done(ui.unpurchaseItemSuccess)
+  .fail(ui.failure);
+  $(event.target).closest('#purchased').html('<div class="checkbox" style="text-align:center; margin-left: 7px;"><td id="purchased"><label><input type="checkbox" id="purchase" data-id=' + data + '></label></td></div>');
+};
+
+const searchEventList = () => {
+  let data = $('#search-field').val();
+  api.showAllEvents(data)
+  .done(ui.showAllEvents)
+  .fail(ui.failure);
+};
+
 const addHandlers = () => {
   $('#view-my-events').on('click', viewEvents);
   $('#create-event').on('click', clearForms);
   $('#create-event-form').on('submit', createEvent);
   $('#view-my-items').on('click', viewItems);
+  $('#search-events').on('click', searchEvents);
   $('#add-item-form').on('submit', addItem);
+  $('#search').on('click', searchEventList);
   $(document).on('click','#selectEvent', viewEvent);
   $(document).on('click','#deleteThis', deleteEvent);
   $(document).on('click','#addItem', setEventId);
@@ -116,6 +143,7 @@ const addHandlers = () => {
   $(document).on('click','#claim', claimItem);
   $(document).on('click','#purchase', purchaseItem);
   $(document).on('click','#unclaimItem', unclaimItem);
+  $(document).on('click','#unpurchase', unpurchaseItem);
 };
 
 module.exports = {

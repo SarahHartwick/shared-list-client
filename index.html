@@ -62,6 +62,9 @@
               <form id="sign-up" style="text-align:center;">
                 <fieldset>
 
+                  <input type="text" name="credentials[name]"
+                  id="signup-name" placeholder="Your Name"><br /><br />
+
                   <input type="email" name="credentials[email]"
                   id="signup-email" placeholder="Your Email"><br /><br />
 
@@ -120,19 +123,28 @@
 <div id = "signed-in">
 <div class="options">
   <!--View My Events-->
-        <form id="view-my-events" class="col-xs-4">
+        <form id="view-my-events" class="col-sm-3">
           <fieldset>
-            <button type="button" class="btn btn-default btn-lg">
-              <span style="font-weight: 300; font-size: 22px; margin-top: 10px">View My Events</span>
+            <button type="button" class="btn btn-default btn-md">
+              <span style="font-weight: 300; font-size: 22px; margin: 20px auto">View My Events</span>
+            </button>
+          </fieldset>
+        </form>
+
+  <!--Search For Events-->
+        <form id="search-events" class="col-sm-3">
+          <fieldset>
+            <button type="button" class="btn btn-default btn-md">
+              <span style="font-weight: 300; font-size: 22px; margin: 20px auto">Search For Events</span>
             </button>
           </fieldset>
         </form>
 
   <!--Create An Event-->
-        <div id="create-event" class="col-xs-4">
-          <a href="#" class="btn btn-default btn-lg" role="button" data-toggle="modal"
+        <div id="create-event" class="col-sm-3">
+          <a href="#" class="btn btn-default btn-md" role="button" data-toggle="modal"
            data-target="#create-event-modal">
-              <span style="font-weight: 300; font-size: 22px; margin-top: 10px">Create An Event</span>
+              <span style="font-weight: 300; font-size: 22px; margin: 20px auto">Create An Event</span>
           </a>
         </div>
 
@@ -173,10 +185,10 @@
         </div>
 
   <!--View My Items-->
-        <form id="view-my-items" class="col-xs-4">
+        <form id="view-my-items" class="col-sm-3">
           <fieldset>
-            <button type="button" class="btn btn-default btn-lg">
-              <span style="font-weight: 300; font-size: 22px; margin-top: 10px">View My Items</span>
+            <button type="button" class="btn btn-default btn-md">
+              <span style="font-weight: 300; font-size: 22px; margin: 20px auto">View My Items</span>
             </button>
           </fieldset>
         </form>
@@ -217,6 +229,17 @@
     </div>
 <!-- Main Content-->
 <div style="clear: both;"></div>
+<center><div class="jumbotron">
+  <div id="welcome" style="text-align:center">
+  </div>
+  <div class="input-group">
+    <input type="text" style="float:left" class="form-control" id="search-field" aria-label="..." placeholder="Search by Event Name or ID">
+    <div class="input-group-btn">
+    <a class="btn btn-default btn-md" id="search" style="height:34px">Find Event</a>
+    </div>
+  </div>
+</div>
+</center>
 <div class="content">
 </div>
 <!-- ScoreBoard-->

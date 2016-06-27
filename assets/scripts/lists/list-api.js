@@ -140,6 +140,31 @@ const unclaimItem = (data) => {
   });
 };
 
+const unpurchaseItem = (data) => {
+  return $.ajax({
+    url: app.host + '/items/' + data,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+    data: {
+      "item": {
+        "purchased": "false"
+      }
+    }
+  });
+};
+
+const showAllEvents = (data) => {
+  return $.ajax({
+    url: app.host + '/events/search/' +  data,
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+  });
+};
+
 module.exports = {
   showEvents,
   createEvent,
@@ -151,4 +176,6 @@ module.exports = {
   claimItem,
   purchaseItem,
   unclaimItem,
+  unpurchaseItem,
+  showAllEvents,
 };

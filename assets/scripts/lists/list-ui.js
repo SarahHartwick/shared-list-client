@@ -5,6 +5,8 @@ const singleEventListing = require('../templates/singleEvent.handlebars');
 const myEventsListing = require('../templates/myEvents.handlebars');
 const itemListing = require('../templates/newItem.handlebars');
 const myItemsListing = require('../templates/myItems.handlebars');
+const singleItem = require('../templates/singleItem.handlebars');
+const searchEvents = require('../templates/searchEvents.handlebars');
 
 const showEvents = (data) => {
   console.log(data);
@@ -35,6 +37,7 @@ const deleteEventSuccess = (data) => {
 
 const eventSelected = (event) => {
   $('.content').empty();
+  $('.jumbotron').hide();
   $('.content').append(singleEventListing(event));
 };
 
@@ -52,8 +55,18 @@ const purchaseItemSuccess = (data) => {
 
 };
 
+const unpurchaseItemSuccess = (data) => {
+  console.log(data);
+};
+
 const itemFailure = (data) => {
   $('#item-notes').append('<span style="color:red">Do not leave any fields blank.</span>');
+};
+
+const showAllEvents = (data) => {
+  $('#search-field').val('');
+  $('.content').empty();
+  $('.content').append(myEventsListing(data));
 };
 
 
@@ -67,4 +80,6 @@ module.exports = {
   itemAdded,
   itemFailure,
   showItems,
+  unpurchaseItemSuccess,
+  showAllEvents,
 };

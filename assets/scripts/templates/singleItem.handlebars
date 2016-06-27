@@ -1,0 +1,16 @@
+<tr>
+  <div class="checkbox" style="text-align:left">
+<td id="purchased">
+  {{#if purchased}}
+  <h5 style="color:#000"><span style="color:#236167" id="unpurchase" data-id={{item.id}} class="glyphicon glyphicon-ok"></span></h5>
+  {{else}}<label>
+  <input type="checkbox" id="purchase" data-id={{item.id}}></label>
+  {{/if}}
+</td>
+  </div>
+  <td><h4>{{item.name}}</h4></td>
+  <td><h4>{{item.unit}}</h4></td>
+  <td id="item-event-name"><h4 style="color:#000">{{item.event.name}}</h4></td>
+<td><button type="button" class="close" style="text-align:center" id="unclaimItem" data-id={{id}}><span aria-hidden="true">&times;</span></button>
+</td>
+</tr>

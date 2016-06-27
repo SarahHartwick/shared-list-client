@@ -1,4 +1,5 @@
 <div id ="event-listing">
+
   <h1>{{event.name}}</h1>
   <h5><span style="color:#000">Date:</span> {{event.date}}</h5>
   <h5><span style="color:#000">Location:</span> {{event.location}}</h5>
@@ -8,6 +9,8 @@
 
   <button class='btn btn-md btn-default' id="deleteThis" data-id={{event.id}}><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete Event</button>
 
+  <button class='btn btn-md btn-default' onClick="window.print()"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print List</button>
+  
   <h3>Item List:</h3>
   <table class="table table-hover" id="item-table">
     <tr>
@@ -21,9 +24,10 @@
     <div class="checkbox" style="text-align:left">
   <td id="claimed">
     {{#if claimed}}
-    <h5 style="color:#000">{{user_id}} Claimed!</h5>
-    {{else}}<label>
-    <input type="checkbox" id="claim" data-id={{id}}></label>
+      <!-- <h5 style="color:#000"><span style="color:#236167" class="glyphicon glyphicon-user"></span> You Claimed</h5> -->
+      <h5 style="color:#000"><span style="color:#236167" class="glyphicon glyphicon-user"></span> {{user.name}} Claimed</h5>
+      {{else}}<label>
+      <input type="checkbox" id="claim" data-id={{id}}></label>
     {{/if}}
   </td>
     </div>
