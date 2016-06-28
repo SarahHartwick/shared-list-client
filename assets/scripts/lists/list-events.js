@@ -13,6 +13,9 @@ const viewEvents = (event) => {
   api.showEvents()
   .done(ui.showEvents)
   .fail(ui.failure);
+  api.showMyEvents()
+  .done(ui.showMyEvents)
+  .fail(ui.failure);
 };
 
 const createEvent = (event) => {

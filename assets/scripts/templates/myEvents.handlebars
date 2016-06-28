@@ -1,9 +1,10 @@
+{{#if sharings}}<br /><h2 style="color:#A9A9A9; font-weight:300;">Events You've Been Invited To</h2>{{/if}}
 {{#sharings}}
 <div id ="event-listing">
   <h1>{{event.name}}</h1>
   <h5><span style="color:#000">Date:</span> {{event.date}}</h5>
   <h5><span style="color:#000">Location:</span> {{event.location}}</h5>
+  <h5><span style="color:#000">Created By:</span> {{event.user.name}}</h5>
   <button class='btn btn-md btn-default' id="selectEvent" data-id={{event.id}}>Select</button>
-  <button class='btn btn-md btn-default' id='deleteThis' data-id={{event.id}}>Delete</button>
 </div>
 {{/sharings}}

@@ -1,0 +1,10 @@
+{{#if events}}<br /><h2 style="color:#A9A9A9; font-weight:300">Events You've Created</h2>{{/if}}
+{{#events}}
+<div id ="event-listing">
+  <h1>{{name}}</h1>
+  <h5><span style="color:#000">Date:</span> {{date}}</h5>
+  <h5><span style="color:#000">Location:</span> {{location}}</h5>
+  <button class='btn btn-md btn-default' id="selectEvent" data-id={{id}}>Select</button>
+  <button class='btn btn-md btn-default' id='deleteThis' data-id={{id}}>Delete</button>
+</div>
+{{/events}}

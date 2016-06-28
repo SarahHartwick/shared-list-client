@@ -13,6 +13,16 @@ const showEvents = () => {
   });
 };
 
+const showMyEvents = () => {
+  return $.ajax({
+    url: app.host + '/users/' + app.user.id + '/events/',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+  });
+};
+
 const createEvent = (data) => {
   return $.ajax({
     url: app.host + '/events/',
@@ -217,4 +227,5 @@ module.exports = {
   inviteFriend,
   showAllProfiles,
   uninvite,
+  showMyEvents,
 };

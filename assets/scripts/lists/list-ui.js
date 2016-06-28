@@ -10,10 +10,16 @@ const searchEvents = require('../templates/searchEvents.handlebars');
 const userListing = require('../templates/userListing.handlebars');
 const friendsListing = require('../templates/friendsListing.handlebars');
 const searchEventsListing = require('../templates/searchEventsListing.handlebars');
+const yourEventsListing = require('../templates/yourEvents.handlebars');
 
 const showEvents = (data) => {
   console.log(data);
   $('.content').append(myEventsListing(data));
+};
+
+const showMyEvents = (data) => {
+  console.log(data);
+  $('.content').append(yourEventsListing(data));
 };
 
 const showItems = (data) => {
@@ -22,7 +28,7 @@ const showItems = (data) => {
 };
 
 const eventCreated = (data) => {
-  console.log(event);
+  console.log(data);
   $("#create-event-modal").modal('hide');
   $('#event-name').val('');
   $('#event-location').val('');
@@ -151,4 +157,5 @@ module.exports = {
   friendInvited,
   allFriendsInvited,
   listInvites,
+  showMyEvents,
 };

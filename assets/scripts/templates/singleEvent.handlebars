@@ -3,14 +3,13 @@
   <h1>{{event.name}}</h1>
   <h5><span style="color:#000">Date:</span> {{event.date}}</h5>
   <h5><span style="color:#000">Location:</span> {{event.location}}</h5>
+  <h5><span style="color:#000">Created By:</span> {{event.user.name}}</h5>
 
   <a href="#" id="addItem" class="btn btn-default btn-md" role="button" data-toggle="modal"
   data-target="#add-item-modal" data-id={{event.id}}><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span> Add Items</span></a>
 
   <a href="#" id="invite-button" class="btn btn-default btn-md" role="button" data-toggle="modal"
   data-target="#invite-friends-modal" data-id={{event.id}}><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Invite Friends</span></a>
-
-  <button class='btn btn-md btn-default' id="deleteThis" data-id={{event.id}}><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete Event</button>
 
   <button class='btn btn-md btn-default' onClick="window.print()"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print List</button>
 
