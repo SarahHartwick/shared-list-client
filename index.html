@@ -123,7 +123,7 @@
 <div id = "signed-in">
 <div class="options">
   <!--View My Events-->
-        <form id="view-my-events" class="col-sm-3">
+        <form id="view-my-events" class="col-sm-4">
           <fieldset>
             <button type="button" class="btn btn-default btn-md">
               <span style="font-weight: 300; font-size: 22px; margin: 20px auto">View My Events</span>
@@ -132,16 +132,16 @@
         </form>
 
   <!--Search For Events-->
-        <form id="search-events" class="col-sm-3">
+        <!-- <form id="search-events" class="col-sm-3">
           <fieldset>
             <button type="button" class="btn btn-default btn-md">
               <span style="font-weight: 300; font-size: 22px; margin: 20px auto">Search For Events</span>
             </button>
           </fieldset>
-        </form>
+        </form> -->
 
   <!--Create An Event-->
-        <div id="create-event" class="col-sm-3">
+        <div id="create-event" class="col-sm-4">
           <a href="#" class="btn btn-default btn-md" role="button" data-toggle="modal"
            data-target="#create-event-modal">
               <span style="font-weight: 300; font-size: 22px; margin: 20px auto">Create An Event</span>
@@ -185,7 +185,7 @@
         </div>
 
   <!--View My Items-->
-        <form id="view-my-items" class="col-sm-3">
+        <form id="view-my-items" class="col-sm-4">
           <fieldset>
             <button type="button" class="btn btn-default btn-md">
               <span style="font-weight: 300; font-size: 22px; margin: 20px auto">View My Items</span>
@@ -212,7 +212,7 @@
               <input type="text" class="form-control" name="unit" id="item-unit" placeholder="Item Quantity">
             </fieldset>
             <fieldset class="form-group">
-              <input type="hidden" name="eventId" id="item-event-id" value="34">
+              <input type="hidden" name="eventId" id="item-event-id" value="">
             </fieldset>
             <fieldset class="form-group">
                 <input type="submit" name="submit" class="btn btn-lg btn-default" value="Add Item">
@@ -220,6 +220,40 @@
               <div id= "item-notes">
               </div>
             </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- Invite Friend -->
+    <div class="modal fade" id="invite-friends-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Share This List</h4>
+          </div>
+          <div class="modal-body">
+            <form id="invite-form" style="text-align:center;">
+              <fieldset class="form-group">
+              <label for="invite-email"><span style="color:#236167" class="glyphicon glyphicon-email"></span> Who Would You Like to Invite?</label>
+              <input type="text" class="form-control" name="email" id="invite-email" placeholder="Search by Name or Email Address">
+            </fieldset>
+            <fieldset class="form-group">
+                <input type="button" name="search-friend" id="search-friend" class="btn btn-lg btn-default" value="Find Friend">
+            </fieldset>
+            </form>
+            <div id= "invite-notes">
+              <form id = "invite-friend-form">
+              <fieldset class="form-group">
+                  <input type="hidden" name="inviteEventId" id="invite-event-id" value="">
+              </fieldset>
+              <fieldset id="add-friends">
+              </fieldset>
+            </form>
+            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -5,7 +5,7 @@ const ui = require('./list-ui.js');
 
 const showEvents = () => {
   return $.ajax({
-    url: app.host + '/users/' + app.user.id + '/events',
+    url: app.host + '/sharings/' + app.user.id + '/events/' + app.profile,
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + app.user.token,
@@ -165,6 +165,42 @@ const showAllEvents = (data) => {
   });
 };
 
+const showAllProfiles = (data) => {
+  return $.ajax({
+    url: app.host + '/profiles/search/' +  data,
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+  });
+};
+
+const inviteFriend = (data) => {
+  return $.ajax({
+    url: app.host + '/sharings',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+    data: {
+      "sharing": {
+        "profile_id": data.profileId,
+        "event_id": data.eventId
+      }
+    }
+  });
+};
+
+const uninvite = (data) => {
+  return $.ajax({
+    url: app.host + '/sharings/' +  data,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+  });
+};
+
 module.exports = {
   showEvents,
   createEvent,
@@ -178,4 +214,7 @@ module.exports = {
   unclaimItem,
   unpurchaseItem,
   showAllEvents,
+  inviteFriend,
+  showAllProfiles,
+  uninvite,
 };

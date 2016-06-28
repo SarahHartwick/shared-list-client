@@ -1,6 +1,7 @@
 'use strict';
 
 const app = require('../app.js');
+const api = require('./api.js');
 
 const failure = (error) => {
   console.error(error);
@@ -21,10 +22,34 @@ const signUpSuccess = function(data){
   $('#signin-password').val($('#signup-password').val());
   $('#sign-in').submit();
   app.user = data.user;
+  let id = app.user.id;
+  api.createProfile(id)
+  .done(profilecreated)
+  .fail(failure);
   $('#signin-modal').modal('hide');
   $('#signup-modal').modal('hide');
   $('#signed-out').hide();
   $('#signed-in').show();
+};
+
+const profileCreated = (data) => {
+  app.profile = data.profiles[0].id;
+  console.log(app.profile);
+};
+
+const profilecreated = (data) => {
+  app.profile = data.profile.id;
+  console.log(app.profile);
+};
+
+const getProfile = (data) => {
+  return $.ajax({
+    url: app.host + '/profiles/find/' + data.user.id,
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+  });
 };
 
 const signInSuccess = (data) => {
@@ -35,6 +60,9 @@ const signInSuccess = (data) => {
   $('#signed-in').show();
   $('.jumbotron').show();
   $('#welcome').html('<h1>Hello, ' + app.user.name +'</h1>');
+  getProfile(data)
+    .done(profileCreated)
+    .fail(failure);
 };
 
 const signOutSuccess = (data) => {

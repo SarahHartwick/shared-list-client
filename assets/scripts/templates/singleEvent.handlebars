@@ -7,10 +7,15 @@
   <a href="#" id="addItem" class="btn btn-default btn-md" role="button" data-toggle="modal"
   data-target="#add-item-modal" data-id={{event.id}}><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span> Add Items</span></a>
 
+  <a href="#" id="invite-button" class="btn btn-default btn-md" role="button" data-toggle="modal"
+  data-target="#invite-friends-modal" data-id={{event.id}}><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Invite Friends</span></a>
+
   <button class='btn btn-md btn-default' id="deleteThis" data-id={{event.id}}><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete Event</button>
 
   <button class='btn btn-md btn-default' onClick="window.print()"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print List</button>
-  
+
+
+
   <h3>Item List:</h3>
   <table class="table table-hover" id="item-table">
     <tr>

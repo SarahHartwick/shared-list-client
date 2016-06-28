@@ -39,9 +39,27 @@ const changePassword = (data) => {
   });
 };
 
+const createProfile = (id) => {
+  return $.ajax({
+    url: app.host + '/profiles',
+    method: "POST",
+    headers: {
+        Authorization: 'Token token=' + app.user.token,
+      },
+    data: {
+      "profile": {
+        "user_id": id,
+        "email": app.user.email,
+        "name": app.user.name
+      }
+    }
+  });
+};
+
 module.exports = {
   signUp,
   signIn,
   signOut,
   changePassword,
+  createProfile,
 };

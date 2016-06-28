@@ -1,0 +1,10 @@
+{{#events}}
+<div id ="event-listing">
+  <h1>{{name}}</h1>
+  <h5><span style="color:#000">Date:</span> {{date}}</h5>
+  <h5><span style="color:#000">Location:</span> {{location}}</h5>
+  <h5><span style="color:#000"># of Items:</span> {{items.length}}</h5>
+  <button class='btn btn-md btn-default' id="selectEvent" data-id={{id}}>Select</button>
+  <div id={{id}}></div>
+</div>
+{{/events}}

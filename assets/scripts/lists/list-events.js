@@ -63,12 +63,35 @@ const setEventId = (event) => {
   $('#item-notes').empty();
 };
 
+const setEventIdForSharing = (event) => {
+  let id = $(event.target).data("id");
+  $('#invite-email').val('');
+  $('#invite-event-id').val(id);
+  $('#event-notes').empty();
+  $('#add-friends').empty();
+  $('#add-friends').html('<center><h3 style="color:#000">Friends Invited:</h3>');
+  ui.listInvites(id)
+  .done(ui.allFriendsInvited)
+  .fail(ui.failure);
+};
+
 const addItem = (event) => {
   event.preventDefault();
   $('#item-notes').empty();
   let data = getFormFields(event.target);
   api.addItem(data)
   .done(ui.itemAdded)
+  .fail(ui.itemFailure);
+};
+
+const inviteFriend = (event) => {
+  event.preventDefault();
+  let profile = $(event.target).data("id");
+  let eventid = $('#invite-event-id').val();
+  let data = { "profileId": profile , "eventId": eventid  };
+  $('#event-notes').empty();
+  api.inviteFriend(data)
+  .done(ui.friendInvited)
   .fail(ui.itemFailure);
 };
 
@@ -128,14 +151,32 @@ const searchEventList = () => {
   .fail(ui.failure);
 };
 
+const searchUsers = () => {
+  event.preventDefault();
+  let data = $('#invite-email').val();
+  api.showAllProfiles(data)
+  .done(ui.showAllProfiles)
+  .fail(ui.failure);
+};
+
+const uninvite = (event) => {
+  event.preventDefault();
+  let data = $(event.target).data("id");
+  api.uninvite(data)
+  .done(ui.uninviteSuccess)
+  .fail(ui.failure);
+  $(event.target).parent().hide();
+};
+
 const addHandlers = () => {
   $('#view-my-events').on('click', viewEvents);
   $('#create-event').on('click', clearForms);
   $('#create-event-form').on('submit', createEvent);
   $('#view-my-items').on('click', viewItems);
-  $('#search-events').on('click', searchEvents);
+  $('#view-my-events').on('click', searchEvents);
   $('#add-item-form').on('submit', addItem);
   $('#search').on('click', searchEventList);
+  $('#search-friend').on('click', searchUsers);
   $(document).on('click','#selectEvent', viewEvent);
   $(document).on('click','#deleteThis', deleteEvent);
   $(document).on('click','#addItem', setEventId);
@@ -144,6 +185,9 @@ const addHandlers = () => {
   $(document).on('click','#purchase', purchaseItem);
   $(document).on('click','#unclaimItem', unclaimItem);
   $(document).on('click','#unpurchase', unpurchaseItem);
+  $(document).on('click','#invite-button', setEventIdForSharing);
+  $(document).on('click', '#invite-friend', inviteFriend);
+  $(document).on('click','#uninvite', uninvite);
 };
 
 module.exports = {

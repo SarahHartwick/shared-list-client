@@ -1,0 +1,9 @@
+{{#profiles}}
+<div id ="event-listing">
+  <h4>{{name}}</h4>
+  <h5><span style="color:#000">User ID:</span> {{id}}</h5>
+  <h5><span style="color:#000">Email:</span> {{email}}</h5>
+  <input type="hidden" name="inviteProfileId" id="invite-profile-id" value={{id}}>
+  <button class='btn btn-md btn-default' name="profileId" id="invite-friend" data-id={{id}}>Invite</button>
+</div>
+{{/profiles}}
