@@ -42,7 +42,7 @@ const searchEvents = (event) => {
   event.preventDefault();
   $('.content').empty();
   $('#welcome').empty();
-  $('.jumbotron').show();
+  // $('.jumbotron').show();
 };
 
 const clearForms = () => {

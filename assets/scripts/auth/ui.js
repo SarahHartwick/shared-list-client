@@ -4,7 +4,6 @@ const app = require('../app.js');
 const api = require('./api.js');
 
 const failure = (error) => {
-  console.error(error);
 };
 
 const signInFailure = () => {
@@ -34,12 +33,10 @@ const signUpSuccess = function(data){
 
 const profileCreated = (data) => {
   app.profile = data.profiles[0].id;
-  console.log(app.profile);
 };
 
 const profilecreated = (data) => {
   app.profile = data.profile.id;
-  console.log(app.profile);
 };
 
 const getProfile = (data) => {
@@ -80,7 +77,6 @@ const signOutSuccess = (data) => {
 };
 
 const changePasswordSuccess = (data) => {
-  console.log('User #' + app.user.id + ' has successfully changed password.');
   $('#password-modal').modal('hide');
 };
 

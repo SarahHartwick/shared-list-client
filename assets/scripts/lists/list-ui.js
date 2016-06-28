@@ -13,22 +13,18 @@ const searchEventsListing = require('../templates/searchEventsListing.handlebars
 const yourEventsListing = require('../templates/yourEvents.handlebars');
 
 const showEvents = (data) => {
-  console.log(data);
   $('.content').append(myEventsListing(data));
 };
 
 const showMyEvents = (data) => {
-  console.log(data);
   $('.content').append(yourEventsListing(data));
 };
 
 const showItems = (data) => {
-  console.log(data);
   $('.content').append(myItemsListing(data));
 };
 
 const eventCreated = (data) => {
-  console.log(data);
   $("#create-event-modal").modal('hide');
   $('#event-name').val('');
   $('#event-location').val('');
@@ -53,7 +49,6 @@ const eventCreated = (data) => {
 // };
 
 const eventFailure = (data) => {
-  console.log(data);
   $('#event-notes').append('<span style="color:red">Do not leave any fields blank. Please check that you have entered a valid date.</span>');
 };
 
@@ -61,8 +56,6 @@ const deleteEventSuccess = (data) => {
 };
 
 const eventSelected = (data) => {
-  console.log(data.event.profiles);
-  console.log(app.profile);
   function isProfileId(p) {
     if (p.id === app.profile) {
       return true;
@@ -93,11 +86,9 @@ const purchaseItemSuccess = (data) => {
 };
 
 const failure = (data) => {
-  console.log(data);
 };
 
 const unpurchaseItemSuccess = (data) => {
-  console.log(data);
 };
 
 const itemFailure = (data) => {
@@ -111,7 +102,6 @@ const showAllEvents = (data) => {
 };
 
 const showAllProfiles = (data) => {
-  console.log(data);
   $('#invite-email').val('');
   $('#add-friends').html(userListing(data));
 };
@@ -136,7 +126,6 @@ const friendInvited = (data) => {
 
 
 const allFriendsInvited = (data) => {
-  console.log(data);
   $('#add-friends').append(friendsListing(data));
 };
 
