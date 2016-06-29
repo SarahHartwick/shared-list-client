@@ -859,7 +859,8 @@ webpackJsonp([0],[
 	};
 
 	var friendInvited = function friendInvited(data) {
-	  var id = data.event_id;
+	  var id = data.sharing.event_id;
+	  $('#add-friends').empty();
 	  $('#add-friends').html('<center><h3 style="color:#000">People Invited:</h3>');
 	  listInvites(id).done(allFriendsInvited).fail(failure);
 	};
