@@ -1,4 +1,6 @@
 # Shared Event Lists [http://www.sharedeventlists.com]
+Back End Repo: [https://github.com/SarahHartwick/shared-list-api]
+Heroku: [https://sharedeventlists.herokuapp.com]
 
 I created an application that allows friends/family to share lists of items
 that are needed for events.
