@@ -117,7 +117,9 @@ const listInvites = (id) => {
 };
 
 const friendInvited = (data) => {
-  let id = data.event_id;
+  console.log(data);
+  let id = data.sharing.event_id;
+  console.log(id);
   $('#add-friends').empty();
   $('#add-friends').html('<center><h3 style="color:#000">People Invited:</h3>');
   listInvites(id)
@@ -127,6 +129,7 @@ const friendInvited = (data) => {
 
 
 const allFriendsInvited = (data) => {
+  console.log(data);
   $('#add-friends').append(friendsListing(data));
 };
 
