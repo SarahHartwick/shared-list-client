@@ -118,6 +118,7 @@ const listInvites = (id) => {
 
 const friendInvited = (data) => {
   let id = data.event_id;
+  $('#add-friends').empty();
   $('#add-friends').html('<center><h3 style="color:#000">People Invited:</h3>');
   listInvites(id)
   .done(allFriendsInvited)
